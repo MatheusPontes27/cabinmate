@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="registrar()">Registrar</button>
+
+  <script>
+    function registrar() {
+      fetch("http://localhost/cabinmate/backend/auth/register.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nome: "Matheus Teste",
+          email: "matheus@test.com",
+          senha: "123456"
+        })
+      })
+      .then(r => r.json())
+      .then(d => console.log(d))
+    }
+  </script>
+</body>
+</html>

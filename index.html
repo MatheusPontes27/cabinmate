@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>CabinMate • Login</title>
+
+    <link rel="stylesheet" href="./frontend/CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="content first-content">
+        <!-- LADO ESQUERDO -->
+        <div class="first-column">
+            <h2 class="title title-primary">Bem-vindo!</h2>
+            <p class="description description-primary">Gerencie seus voos</p>
+            <p class="description description-primary">com o CabinMate</p>
+            <button id="signin" class="btn btn-primary">Cadastrar</button>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="second-column">
+            <h2 class="title title-second">Login</h2>
+
+            <form class="form" onsubmit="login(event)">
+                <label class="label-input">
+                    <i class="far fa-envelope icon-modify"></i>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                </label>
+
+                <label class="label-input">
+                    <i class="fas fa-lock icon-modify"></i>
+                    <input type="password" id="loginSenha" placeholder="Senha" required>
+                </label>
+
+                <button class="btn btn-second">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CADASTRO -->
+    <div class="content second-content">
+        <div class="first-column">
+            <h2 class="title title-primary">Olá, Tripulante!</h2>
+            <p class="description description-primary">Crie sua conta</p>
+            <p class="description description-primary">no CabinMate</p>
+            <button id="signup" class="btn btn-primary">Cadastrar</button>
+        </div>
+
+        <div class="second-column">
+            <h2 class="title title-second">Cadastro</h2>
+
+            <form class="form" onsubmit="registrar(event)">
+                <label class="label-input">
+                    <i class="far fa-user icon-modify"></i>
+                    <input type="text" id="regNome" placeholder="Nome" required>
+                </label>
+
+                <label class="label-input">
+                    <i class="far fa-envelope icon-modify"></i>
+                    <input type="email" id="regEmail" placeholder="Email" required>
+                </label>
+
+                <label class="label-input">
+                    <i class="fas fa-lock icon-modify"></i>
+                    <input type="password" id="regSenha" placeholder="Senha" required>
+                </label>
+
+                <button class="btn btn-second">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="./frontend/js/auth.js"></script>
+
+<script>
+    const btnSignin = document.getElementById("signin");
+    const btnSignup = document.getElementById("signup");
+    const body = document.body;
+
+    btnSignin.addEventListener("click", () => {
+        body.className = "sign-in-js";
+    });
+
+    btnSignup.addEventListener("click", () => {
+        body.className = "sign-up-js";
+    });
+</script>
+
+</body>
+</html>
