@@ -62,10 +62,10 @@ body {
     text-transform: uppercase;
     color: #fff;
     font-size: 10px;
-    padding: 10px 45px;
+    padding: 10px 50px;
     cursor: pointer;
     font-weight: bold;
-    width: 150px;
+    width: 160px;
     align-self: center;
     border: none;
     margin-top: 1rem;
@@ -511,5 +511,81 @@ input:-webkit-autofill
 @media screen and (max-width: 425px) {
     .form {
         width: 100%;
+    }
+}
+
+/* ============================= */
+/* ✈️ AVIÕES PASSANDO NA TELA */
+/* ============================= */
+
+.planes-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* não bloqueia cliques */
+    z-index: 2; /* abaixo do conteúdo, acima do fundo */
+    overflow: hidden;
+}
+
+/* AVIÃO BASE */
+.plane {
+    position: absolute;
+    width: 90px;
+    opacity: 0.75;
+    filter: drop-shadow(0 0 6px rgba(0,0,0,0.4));
+}
+
+/* AVIÃO 1 – BAIXO */
+.plane-1 {
+    bottom: 18%;
+    left: -20%;
+    animation: flyPlane1 18s linear infinite;
+}
+
+/* AVIÃO 2 – MÉDIO */
+.plane-2 {
+    top: 35%;
+    left: -30%;
+    width: 70px;
+    opacity: 0.55;
+    animation: flyPlane2 25s linear infinite;
+}
+
+/* AVIÃO 3 – ALTO (DISTANTE) */
+.plane-3 {
+    top: 15%;
+    left: -40%;
+    width: 55px;
+    opacity: 0.35;
+    animation: flyPlane3 32s linear infinite;
+}
+
+/* ============================= */
+/* 🎬 ANIMAÇÕES CINEMATOGRÁFICAS */
+/* ============================= */
+
+@keyframes flyPlane1 {
+    from {
+        transform: translateX(0) translateY(0) scale(0.9);
+    }
+    to {
+        transform: translateX(140vw) translateY(-120px) scale(1.1);
+    }
+}
+
+@keyframes flyPlane2 {
+    from {
+        transform: translateX(0) translateY(0) scale(0.8);
+    }
+    to {
+        transform: translateX(150vw) translateY(-60px) scale(1);
+    }
+}
+
+@keyframes flyPlane3 {
+    from {
+        transform: translateX(0) translateY(0) scale(0.7);
+    }
+    to {
+        transform: translateX(160vw) translateY(-30px) scale(0.9);
     }
 }

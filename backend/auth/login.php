@@ -3,6 +3,7 @@ require __DIR__ . '/../config/cors.php';
 require __DIR__ . '/../config/database.php';
 require __DIR__ . '/jwt.php';
 
+
 header("Content-Type: application/json");
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -23,6 +24,7 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([$email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 if (!$user || !password_verify($senha, $user['senha'])) {
   http_response_code(401);

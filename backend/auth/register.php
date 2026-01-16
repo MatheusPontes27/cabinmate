@@ -2,7 +2,6 @@
 require __DIR__ . '/../config/cors.php';
 require __DIR__ . '/../config/database.php';
 
-
 header("Content-Type: application/json");
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -17,23 +16,28 @@ if (!$nome || !$email || !$senha) {
   exit;
 }
 
-// Verifica se já existe
-$stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+/**
+ * 1️⃣ Verifica se o email já existe
+ */
+$stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? LIMIT 1");
 $stmt->execute([$email]);
+$existe = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($stmt->rowCount() > 0) {
+if ($existe) {
   http_response_code(409);
   echo json_encode(["error" => "Email já cadastrado"]);
   exit;
 }
 
-$hash = password_hash($senha, PASSWORD_DEFAULT);
+/**
+ * 2️⃣ Cria o usuário
+ */
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
 $stmt = $pdo->prepare("
   INSERT INTO users (nome, email, senha, provider)
   VALUES (?, ?, ?, 'local')
 ");
-
-$stmt->execute([$nome, $email, $hash]);
+$stmt->execute([$nome, $email, $senhaHash]);
 
 echo json_encode(["success" => true]);

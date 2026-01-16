@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>CabinMate • Dashboard</title>
+  <link rel="stylesheet" href="./CSS/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      ✈️ CabinMate
+    </div>
+
+    <div class="user">
+      <img src="assets/avatar.png">
+      <span>Bem-vindo, Tripulante</span>
+    </div>
+
+    <nav>
+      <a class="active"><i class="fa fa-chart-line"></i> Dashboard</a>
+      <a><i class="fa fa-plane"></i> Meus Voos</a>
+      <a><i class="fa fa-clock"></i> Horas</a>
+      <a><i class="fa fa-note-sticky"></i> Anotações</a>
+      <a id="logout"><i class="fa fa-sign-out-alt"></i> Sair</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <!-- HEADER -->
+    <header>
+      <h1>DASHBOARD • VIAGENS AÉREAS</h1>
+      <div class="icons">
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-google"></i>
+      </div>
+    </header>
+
+    <!-- CARDS -->
+    <section class="cards">
+      <div class="card">
+        <i class="fa fa-plane"></i>
+        <span>Total de voos</span>
+        <strong>128</strong>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-clock"></i>
+        <span>Horas voadas</span>
+        <strong>1.240h</strong>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-calendar"></i>
+        <span>Próximo voo</span>
+        <strong>G3 1023</strong>
+      </div>
+
+      <div class="card">
+        <i class="fa fa-suitcase-rolling"></i>
+        <span>Dias fora</span>
+        <strong>18</strong>
+      </div>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section class="grid">
+
+      <div class="panel">
+        <h3>Horas voadas ao longo do tempo</h3>
+        <canvas id="hoursChart"></canvas>
+      </div>
+
+      <div class="panel">
+        <h3>Distribuição Nacional x Internacional</h3>
+        <canvas id="routeChart"></canvas>
+      </div>
+
+      <div class="panel">
+        <h3>Voos por companhia</h3>
+        <canvas id="companyChart"></canvas>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "../index.html";
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./js/dashboard.js"></script>
+</body>
+</html>
