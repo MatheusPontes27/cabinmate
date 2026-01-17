@@ -12,15 +12,21 @@ function login() {
   .then(res => res.json())
   .then(data => {
     if (data.success) {
+      // 🔐 Salva o token
       localStorage.setItem("token", data.token);
-      alert("Login realizado com sucesso!");
-      console.log(data);
-      // futuramente: window.location.href = "dashboard.html";
+
+      console.log("Login OK, redirecionando...");
+      console.log("Token:", data.token);
+
+      // 🚀 REDIRECT CORRETO
+      window.location.href = "/cabinmate/dashboard.html";
     } else {
       document.getElementById("erro").innerText = data.error;
     }
   })
-  .catch(() => {
-    document.getElementById("erro").innerText = "Login ou Senha incorreto";
+  .catch(err => {
+    console.error("Erro no login:", err);
+    document.getElementById("erro").innerText = "Erro ao conectar ao servidor";
   });
 }
+

@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 function gerarJWT($userId, $email) {
-  $secret = "cabinmate_super_secret";
+  $secret = "CABINMATE_2026_SUPER_SECRET_KEY_256_BITS_LONG";
 
   $payload = [
     "iss" => "cabinmate",
@@ -20,7 +21,7 @@ function gerarJWT($userId, $email) {
 }
 
 function validarJWT($token) {
-  $secret = "cabinmate_super_secret";
+  $secret = "CABINMATE_2026_SUPER_SECRET_KEY_256_BITS_LONG";
 
   try {
     return JWT::decode($token, new Key($secret, 'HS256'))->data;

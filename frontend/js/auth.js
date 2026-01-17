@@ -2,7 +2,6 @@ const API_URL = "http://localhost/cabinmate/backend/auth";
 
 /* REGISTRO */
 async function registrar(event) {
-    event.preventDefault();
 
     const nome = document.getElementById("regNome").value;
     const email = document.getElementById("regEmail").value;
@@ -29,7 +28,6 @@ async function registrar(event) {
 
 /* LOGIN */
 async function login(event) {
-    event.preventDefault();
 
     const email = document.getElementById("loginEmail").value;
     const senha = document.getElementById("loginSenha").value;
@@ -55,4 +53,6 @@ async function login(event) {
 
     alert("Login realizado com sucesso!");
     // window.location.href = "dashboard.html";
+
+    
 }

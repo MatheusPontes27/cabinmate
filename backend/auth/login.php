@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../config/cors.php';
 require __DIR__ . '/../config/database.php';
-require __DIR__ . '/jwt.php';
+require __DIR__ . '/../auth/jwt.php';
 
 
 header("Content-Type: application/json");

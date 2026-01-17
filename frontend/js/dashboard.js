@@ -2,14 +2,19 @@
 const token = localStorage.getItem("token");
 
 if (!token) {
-  window.location.href = "login.html";
+  window.location.href = "/cabinmate/index.html";
 }
 
 // LOGOUT
 document.getElementById("logout").onclick = () => {
   localStorage.removeItem("token");
-  window.location.href = "login.html";
+  window.location.href = "/cabinmate/index.html";
 };
+
+// CANVAS
+const hoursChart = document.getElementById("hoursChart");
+const routeChart = document.getElementById("routeChart");
+const companyChart = document.getElementById("companyChart");
 
 // GRÁFICOS
 new Chart(hoursChart, {
